@@ -1,0 +1,10 @@
+{"time":"2025-04-03T14:10:11.089733+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/Users/orcanon/Desktop/DI725/assignment_1/wandb/run-20250403_141011-ttd1q7ey/logs/debug-core.log"}
+{"time":"2025-04-03T14:10:11.415581+03:00","level":"INFO","msg":"created new stream","id":"ttd1q7ey"}
+{"time":"2025-04-03T14:10:11.415627+03:00","level":"INFO","msg":"stream: started","id":"ttd1q7ey"}
+{"time":"2025-04-03T14:10:11.415641+03:00","level":"INFO","msg":"sender: started","stream_id":"ttd1q7ey"}
+{"time":"2025-04-03T14:10:11.41564+03:00","level":"INFO","msg":"handler: started","stream_id":"ttd1q7ey"}
+{"time":"2025-04-03T14:10:11.415664+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"ttd1q7ey"}
+{"time":"2025-04-03T14:10:11.702132+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-03T14:24:27.401836+03:00","level":"INFO","msg":"stream: closing","id":"ttd1q7ey"}
+{"time":"2025-04-03T14:24:27.40192+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-03T14:24:27.40245+03:00","level":"INFO","msg":"Stopped system monitor"}

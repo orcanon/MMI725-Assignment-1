@@ -1,0 +1,9 @@
+step 0: train loss 1.0597, val loss 1.2213
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/train.py", line 375, in <module>
+    logits, loss = model(X, Y)
+NameError: name 'X' is not defined
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/train.py", line 375, in <module>
+    logits, loss = model(X, Y)
+NameError: name 'X' is not defined

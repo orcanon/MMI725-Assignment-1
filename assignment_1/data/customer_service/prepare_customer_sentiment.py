@@ -14,7 +14,7 @@ output_dir = os.path.join(os.path.dirname(__file__), 'processed_data/customer_se
 os.makedirs(output_dir, exist_ok=True)
 
 # Load CSV
-df = pd.read_csv('./train.csv')
+df = pd.read_csv('data/customer_service/train.csv')
 
 # Keep only the conversation and sentiment columns
 df = df[['conversation', 'customer_sentiment']]

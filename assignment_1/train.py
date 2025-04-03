@@ -29,6 +29,11 @@ from torch.distributed import init_process_group, destroy_process_group
 
 from model import GPTConfig, GPT
 
+import pandas as pd
+from torch.utils.data import Dataset, DataLoader
+import pickle
+import torch.nn.functional as F
+
 # -----------------------------------------------------------------------------
 # default config values designed to train a gpt2 (124M) on OpenWebText
 # I/O
@@ -44,10 +49,12 @@ wandb_log = False # disabled by default
 wandb_project = 'owt'
 wandb_run_name = 'gpt2' # 'run' + str(time.time())
 # data
-dataset = 'openwebtext'
+# dataset = 'openwebtext'
+dataset = 'customer_sentiment'
+block_size = 512  # or shorter if your convos are small
 gradient_accumulation_steps = 5 * 8 # used to simulate larger batch sizes
 batch_size = 12 # if gradient_accumulation_steps > 1, this is the micro-batch size
-block_size = 1024
+# block_size = 1024
 # model
 n_layer = 12
 n_head = 12
@@ -113,6 +120,50 @@ ctx = nullcontext() if device_type == 'cpu' else torch.amp.autocast(device_type=
 
 # poor man's data loader
 data_dir = os.path.join('data', dataset)
+
+
+# Dataset class added to use in sentiment analysis
+class SentimentDataset(Dataset):
+    def __init__(self, split='train'):
+        data_dir = os.path.join('data/customer_service/processed_data', 'customer_sentiment')
+        self.split = split
+        self.df = pd.read_csv('data/customer_service/train.csv')  # or wherever your raw CSV is
+        self.df = self.df[['conversation', 'customer_sentiment']].dropna()
+        self.label_map = {'negative': 0, 'neutral': 1, 'positive': 2}
+
+        # Load char-level vocab
+        with open(os.path.join(data_dir, 'meta.pkl'), 'rb') as f:
+            meta = pickle.load(f)
+        self.stoi = meta['stoi']
+        self.vocab_size = meta['vocab_size']
+
+        # Split 90/10
+        n = len(self.df)
+        if split == 'train':
+            self.df = self.df.iloc[:int(0.9 * n)]
+        else:
+            self.df = self.df.iloc[int(0.9 * n):]
+
+    def encode(self, s):
+        return [self.stoi.get(c, 0) for c in s][:block_size]
+
+    def __len__(self):
+        return len(self.df)
+
+    def __getitem__(self, idx):
+        row = self.df.iloc[idx]
+        x = torch.tensor(self.encode(row['conversation']), dtype=torch.long)
+        y = torch.tensor(self.label_map[row['customer_sentiment']], dtype=torch.long)
+        return x, y
+
+
+def collate_fn(batch):
+    xs, ys = zip(*batch)
+    max_len = max(x.size(0) for x in xs)
+    padded_xs = [F.pad(x, (0, max_len - x.size(0)), value=0) for x in xs]
+    return torch.stack(padded_xs), torch.tensor(ys)
+
+
 def get_batch(split):
     # We recreate np.memmap every batch to avoid a memory leak, as per
     # https://stackoverflow.com/questions/45132940/numpy-memmap-memory-usage-want-to-iterate-once/61472122#61472122
@@ -212,6 +263,7 @@ if ddp:
     model = DDP(model, device_ids=[ddp_local_rank])
 
 # helps estimate an arbitrarily accurate loss over either split using many batches
+'''''
 @torch.no_grad()
 def estimate_loss():
     out = {}
@@ -226,6 +278,25 @@ def estimate_loss():
         out[split] = losses.mean()
     model.train()
     return out
+'''''
+
+@torch.no_grad()
+def estimate_loss():
+    out = {}
+    model.eval()
+    for split, loader in [('train', train_loader), ('val', val_loader)]:
+        losses = []
+        for X, Y in loader:
+            X, Y = X.to(device), Y.to(device)
+            with ctx:
+                _, loss = model(X, Y)
+            losses.append(loss.item())
+            if len(losses) >= eval_iters:
+                break
+        out[split] = sum(losses) / len(losses)
+    model.train()
+    return out
+
 
 # learning rate decay scheduler (cosine with warmup)
 def get_lr(it):
@@ -247,7 +318,11 @@ if wandb_log and master_process:
     wandb.init(project=wandb_project, name=wandb_run_name, config=config)
 
 # training loop
-X, Y = get_batch('train') # fetch the very first batch
+# X, Y = get_batch('train') # fetch the very first batch
+train_dataset = SentimentDataset('train')
+val_dataset = SentimentDataset('val')
+train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, collate_fn=collate_fn)
+val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False, collate_fn=collate_fn)
 t0 = time.time()
 local_iter_num = 0 # number of iterations in the lifetime of this process
 raw_model = model.module if ddp else model # unwrap DDP container if needed
@@ -296,13 +371,16 @@ while True:
             # I really dislike that this bloats the code and forces us to repeat code
             # looking at the source of that context manager, it just toggles this variable
             model.require_backward_grad_sync = (micro_step == gradient_accumulation_steps - 1)
-        with ctx:
-            logits, loss = model(X, Y)
-            loss = loss / gradient_accumulation_steps # scale the loss to account for gradient accumulation
+        for X, Y in train_loader:
+            X, Y = X.to(device), Y.to(device)
+            with ctx:
+                logits, loss = model(X, Y)
+                loss = loss / gradient_accumulation_steps # scale the loss to account for gradient accumulation
         # immediately async prefetch next batch while model is doing the forward pass on the GPU
-        X, Y = get_batch('train')
+        # X, Y = get_batch('train')
         # backward pass, with gradient scaling if training in fp16
         scaler.scale(loss).backward()
+        break
     # clip the gradient
     if grad_clip != 0.0:
         scaler.unscale_(optimizer)

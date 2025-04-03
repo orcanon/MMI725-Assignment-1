@@ -1,0 +1,47 @@
+{
+  "os":  "macOS-13.1-arm64-arm-64bit",
+  "python":  "CPython 3.10.16",
+  "startedAt":  "2025-04-03T19:14:10.045156Z",
+  "args":  [
+    "config/train_customer_sentiment_char.py"
+  ],
+  "program":  "/Users/orcanon/Desktop/DI725/assignment_1/train.py",
+  "codePath":  "assignment_1/train.py",
+  "git":  {
+    "remote":  "git@github.com:orcanon/MMI725-Assignment-1.git",
+    "commit":  "b47fa99d09ff21d68237022c85bdd879f0c5433d"
+  },
+  "email":  "orcanon1@gmail.com",
+  "root":  "/Users/orcanon/Desktop/DI725/assignment_1",
+  "host":  "Ibrahims-MacBook-Air.local",
+  "executable":  "/Users/orcanon/.conda/envs/python3-env/bin/python3",
+  "codePathLocal":  "train.py",
+  "cpu_count":  8,
+  "cpu_count_logical":  8,
+  "disk":  {
+    "/":  {
+      "total":  "245107195904",
+      "used":  "234938691584"
+    },
+    "/System/Volumes/Data":  {
+      "total":  "245107195904",
+      "used":  "234938691584"
+    }
+  },
+  "memory":  {
+    "total":  "17179869184"
+  },
+  "cpu":  {
+    "count":  8,
+    "countLogical":  8
+  },
+  "apple":  {
+    "name":  "Apple M1",
+    "ecpuCores":  4,
+    "pcpuCores":  4,
+    "gpuCores":  7,
+    "memoryGb":  16,
+    "swapTotalBytes":  "2147483648",
+    "ramTotalBytes":  "17179869184"
+  }
+}

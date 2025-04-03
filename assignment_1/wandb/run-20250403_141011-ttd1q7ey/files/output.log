@@ -1,0 +1,62 @@
+step 0: train loss 1.0597, val loss 1.2213
+iter 0: loss 0.9411, time 146496.73ms, mfu -100.00%
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/train.py", line 377, in <module>
+    logits, loss = model(X, Y)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/model.py", line 212, in forward
+    x = block(x)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/model.py", line 104, in forward
+    x = x + self.attn(self.ln_1(x))
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/model.py", line 75, in forward
+    y = self.resid_dropout(self.c_proj(y))
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/dropout.py", line 70, in forward
+    return F.dropout(input, self.p, self.training, self.inplace)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/functional.py", line 1425, in dropout
+    _VF.dropout_(input, p, training) if inplace else _VF.dropout(input, p, training)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/train.py", line 377, in <module>
+    logits, loss = model(X, Y)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/model.py", line 212, in forward
+    x = block(x)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/model.py", line 104, in forward
+    x = x + self.attn(self.ln_1(x))
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/model.py", line 75, in forward
+    y = self.resid_dropout(self.c_proj(y))
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/dropout.py", line 70, in forward
+    return F.dropout(input, self.p, self.training, self.inplace)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/functional.py", line 1425, in dropout
+    _VF.dropout_(input, p, training) if inplace else _VF.dropout(input, p, training)
+KeyboardInterrupt

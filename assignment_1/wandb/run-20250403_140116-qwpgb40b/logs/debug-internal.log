@@ -1,0 +1,15 @@
+{"time":"2025-04-03T14:01:16.504792+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/Users/orcanon/Desktop/DI725/assignment_1/wandb/run-20250403_140116-qwpgb40b/logs/debug-core.log"}
+{"time":"2025-04-03T14:01:16.889926+03:00","level":"INFO","msg":"created new stream","id":"qwpgb40b"}
+{"time":"2025-04-03T14:01:16.889966+03:00","level":"INFO","msg":"stream: started","id":"qwpgb40b"}
+{"time":"2025-04-03T14:01:16.889973+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"qwpgb40b"}
+{"time":"2025-04-03T14:01:16.89001+03:00","level":"INFO","msg":"handler: started","stream_id":"qwpgb40b"}
+{"time":"2025-04-03T14:01:16.89003+03:00","level":"INFO","msg":"sender: started","stream_id":"qwpgb40b"}
+{"time":"2025-04-03T14:01:17.140929+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-03T14:01:17.438774+03:00","level":"INFO","msg":"stream: closing","id":"qwpgb40b"}
+{"time":"2025-04-03T14:01:17.438822+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-03T14:01:17.438889+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-03T14:01:18.456559+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-03T14:01:18.74634+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"qwpgb40b"}
+{"time":"2025-04-03T14:01:18.746327+03:00","level":"INFO","msg":"handler: closed","stream_id":"qwpgb40b"}
+{"time":"2025-04-03T14:01:18.746357+03:00","level":"INFO","msg":"sender: closed","stream_id":"qwpgb40b"}
+{"time":"2025-04-03T14:01:18.746855+03:00","level":"INFO","msg":"stream: closed","id":"qwpgb40b"}
