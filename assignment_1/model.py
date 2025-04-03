@@ -171,54 +171,25 @@ class GPT(nn.Module):
         elif isinstance(module, nn.Embedding):
             torch.nn.init.normal_(module.weight, mean=0.0, std=0.02)
 
-    '''''
     def forward(self, idx, targets=None):
-        device = idx.device
-        b, t = idx.size()
-        assert t <= self.config.block_size, f"Cannot forward sequence of length {t}, block size is only {self.config.block_size}"
-        pos = torch.arange(0, t, dtype=torch.long, device=device) # shape (t)
-
-        # forward the GPT model itself
-        tok_emb = self.transformer.wte(idx) # token embeddings of shape (b, t, n_embd)
-        pos_emb = self.transformer.wpe(pos) # position embeddings of shape (t, n_embd)
-        x = self.transformer.drop(tok_emb + pos_emb)
-        for block in self.transformer.h:
-            x = block(x)
-        x = self.transformer.ln_f(x)
-
-        if targets is not None:
-            # if we are given some desired targets also calculate the loss
-            logits = self.lm_head(x)
-            loss = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)
-        else:
-            # inference-time mini-optimization: only forward the lm_head on the very last position
-            logits = self.lm_head(x[:, [-1], :]) # note: using list [-1] to preserve the time dim
-            loss = None
-
-        return logits, loss
-    '''''
-
-    def forward(self, idx, targets=None):
-        device = idx.device
-        b, t = idx.size()
-        assert t <= self.config.block_size, f"Cannot forward sequence of length {t}, block size is only {self.config.block_size}"
-        pos = torch.arange(0, t, dtype=torch.long, device=device)  # shape (t)
-
-        tok_emb = self.transformer.wte(idx)
+        tok_emb = self.transformer.wte(idx)  # (B, T, C)
+        pos = torch.arange(0, idx.size(1), device=idx.device).unsqueeze(0)
         pos_emb = self.transformer.wpe(pos)
         x = self.transformer.drop(tok_emb + pos_emb)
 
         for block in self.transformer.h:
             x = block(x)
-        x = self.transformer.ln_f(x)
 
-        # Get the final token's representation (or use mean pooling if preferred)
-        x = x[:, -1, :]  # shape (B, C)
+        x = self.transformer.ln_f(x)  # (B, T, C)
 
-        logits = self.classifier_head(x)  # shape (B, num_classes)
+        # Use the representation of the last token for classification
+        x_last = x[:, -1, :]  # (B, C)
+        logits = self.classifier_head(x_last)  # (B, 3)
 
         loss = None
         if targets is not None:
+            if targets.ndim > 1:
+                targets = targets.view(-1)  # just in case
             loss = F.cross_entropy(logits, targets)
 
         return logits, loss
@@ -234,6 +205,7 @@ class GPT(nn.Module):
             if hasattr(block.attn, 'bias'):
                 block.attn.bias = block.attn.bias[:,:,:block_size,:block_size]
 
+    '''''
     @classmethod
     def from_pretrained(cls, model_type, override_args=None):
         assert model_type in {'gpt2', 'gpt2-medium', 'gpt2-large', 'gpt2-xl'}
@@ -276,7 +248,21 @@ class GPT(nn.Module):
         transposed = ['attn.c_attn.weight', 'attn.c_proj.weight', 'mlp.c_fc.weight', 'mlp.c_proj.weight']
         # basically the openai checkpoints use a "Conv1D" module, but we only want to use a vanilla Linear
         # this means that we have to transpose these weights when we import them
-        assert len(sd_keys_hf) == len(sd_keys), f"mismatched keys: {len(sd_keys_hf)} != {len(sd_keys)}"
+
+        # assert len(sd_keys_hf) == len(sd_keys), f"mismatched keys: {len(sd_keys_hf)} != {len(sd_keys)}"
+
+        # allow mismatch by filtering
+        common_keys = set(sd_keys_hf) & set(sd_keys)
+        missing_keys = set(sd_keys) - set(sd_keys_hf)
+        extra_keys = set(sd_keys_hf) - set(sd_keys)
+
+        print(f"Loading {len(common_keys)} shared keys")
+        print(f"Missing in HF model: {missing_keys}")
+        print(f"Extra in HF model: {extra_keys}")
+
+        # load only matching keys
+        model.load_state_dict({k: sd[k] for k in common_keys}, strict=False)
+
         for k in sd_keys_hf:
             if any(k.endswith(w) for w in transposed):
                 # special treatment for the Conv1D weights we need to transpose
@@ -290,6 +276,50 @@ class GPT(nn.Module):
                     sd[k].copy_(sd_hf[k])
 
         return model
+        '''''
+
+    @classmethod
+    def from_pretrained(cls, model_type, override_args=None):
+        from transformers import GPT2LMHeadModel
+
+        # Load the Hugging Face model
+        print(f"Loading pretrained Hugging Face model '{model_type}'")
+        hf_model = GPT2LMHeadModel.from_pretrained(model_type)
+        sd_hf = hf_model.state_dict()
+
+        # Build your model config
+        config_keys = ['n_layer', 'n_head', 'n_embd', 'block_size', 'bias', 'vocab_size']
+        config = {k: getattr(hf_model.config, k) for k in config_keys if hasattr(hf_model.config, k)}
+
+        # Patch: Add missing keys with defaults
+        config['block_size'] = config.get('n_positions', 1024)
+        config['bias'] = True
+        config['vocab_size'] = hf_model.config.vocab_size
+
+        # Override any values
+        if override_args:
+            config.update(override_args)
+
+        model = cls(GPTConfig(**config))
+        sd = model.state_dict()
+
+        # Match keys
+        keys_to_load = [k for k in sd_hf if k in sd and sd_hf[k].shape == sd[k].shape]
+        print(f"✅ Loading {len(keys_to_load)} matching keys.")
+
+        missing = [k for k in sd if k not in sd_hf]
+        extra = [k for k in sd_hf if k not in sd]
+
+        if missing:
+            print(f"⚠️ Keys missing in Hugging Face model: {missing}")
+        if extra:
+            print(f"⚠️ Extra keys in Hugging Face model: {extra}")
+
+        # Load matching keys
+        model.load_state_dict({k: sd_hf[k] for k in keys_to_load}, strict=False)
+
+        return model
+
 
     def configure_optimizers(self, weight_decay, learning_rate, betas, device_type):
         # start with all of the candidate parameters

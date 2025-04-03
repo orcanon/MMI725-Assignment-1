@@ -1,0 +1,16 @@
+{"time":"2025-04-04T00:28:13.940268+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/Users/orcanon/Desktop/DI725/assignment_1/wandb/run-20250404_002813-q9lwwb6r/logs/debug-core.log"}
+{"time":"2025-04-04T00:28:44.050537+03:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-04-04T00:28:46.765236+03:00","level":"INFO","msg":"created new stream","id":"q9lwwb6r"}
+{"time":"2025-04-04T00:28:46.76541+03:00","level":"INFO","msg":"stream: started","id":"q9lwwb6r"}
+{"time":"2025-04-04T00:28:46.76547+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"q9lwwb6r"}
+{"time":"2025-04-04T00:28:46.765553+03:00","level":"INFO","msg":"sender: started","stream_id":"q9lwwb6r"}
+{"time":"2025-04-04T00:28:46.765635+03:00","level":"INFO","msg":"handler: started","stream_id":"q9lwwb6r"}
+{"time":"2025-04-04T00:28:47.025754+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-04T00:28:48.603823+03:00","level":"INFO","msg":"stream: closing","id":"q9lwwb6r"}
+{"time":"2025-04-04T00:28:48.604147+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-04T00:28:48.604205+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-04T00:28:49.488096+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-04T00:28:49.997831+03:00","level":"INFO","msg":"sender: closed","stream_id":"q9lwwb6r"}
+{"time":"2025-04-04T00:28:49.997806+03:00","level":"INFO","msg":"handler: closed","stream_id":"q9lwwb6r"}
+{"time":"2025-04-04T00:28:49.997833+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"q9lwwb6r"}
+{"time":"2025-04-04T00:28:49.998442+03:00","level":"INFO","msg":"stream: closed","id":"q9lwwb6r"}

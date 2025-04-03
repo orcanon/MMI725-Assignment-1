@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/train.py", line 322, in <module>
+    train_dataset = SentimentDataset('train')
+  File "/Users/orcanon/Desktop/DI725/assignment_1/train.py", line 135, in __init__
+    with open(os.path.join(data_dir, 'meta.pkl'), 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'data/customer_service/gpt2_prepared/meta.pkl'
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/train.py", line 322, in <module>
+    train_dataset = SentimentDataset('train')
+  File "/Users/orcanon/Desktop/DI725/assignment_1/train.py", line 135, in __init__
+    with open(os.path.join(data_dir, 'meta.pkl'), 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'data/customer_service/gpt2_prepared/meta.pkl'

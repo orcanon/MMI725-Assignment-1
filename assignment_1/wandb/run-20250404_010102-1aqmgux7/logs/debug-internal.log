@@ -1,0 +1,7 @@
+{"time":"2025-04-04T01:01:02.821896+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/Users/orcanon/Desktop/DI725/assignment_1/wandb/run-20250404_010102-1aqmgux7/logs/debug-core.log"}
+{"time":"2025-04-04T01:01:03.335934+03:00","level":"INFO","msg":"created new stream","id":"1aqmgux7"}
+{"time":"2025-04-04T01:01:03.336003+03:00","level":"INFO","msg":"stream: started","id":"1aqmgux7"}
+{"time":"2025-04-04T01:01:03.336037+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"1aqmgux7"}
+{"time":"2025-04-04T01:01:03.336096+03:00","level":"INFO","msg":"sender: started","stream_id":"1aqmgux7"}
+{"time":"2025-04-04T01:01:03.336116+03:00","level":"INFO","msg":"handler: started","stream_id":"1aqmgux7"}
+{"time":"2025-04-04T01:01:03.592005+03:00","level":"INFO","msg":"Starting system monitor"}

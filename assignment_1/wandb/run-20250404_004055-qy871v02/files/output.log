@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 322, in <module>
+    losses = estimate_loss()
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 275, in estimate_loss
+    _, loss = model(X, Y)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/model.py", line 191, in forward
+    loss = F.cross_entropy(logits, targets)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/functional.py", line 3494, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(
+RuntimeError: 0D or 1D target tensor expected, multi-target not supported
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 322, in <module>
+    losses = estimate_loss()
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 275, in estimate_loss
+    _, loss = model(X, Y)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/model.py", line 191, in forward
+    loss = F.cross_entropy(logits, targets)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/functional.py", line 3494, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(
+RuntimeError: 0D or 1D target tensor expected, multi-target not supported

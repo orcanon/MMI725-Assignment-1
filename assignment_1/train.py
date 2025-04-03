@@ -125,7 +125,7 @@ data_dir = os.path.join('data', dataset)
 # Dataset class added to use in sentiment analysis
 class SentimentDataset(Dataset):
     def __init__(self, split='train'):
-        data_dir = os.path.join('data/customer_service/processed_data', 'customer_sentiment')
+        data_dir = os.path.join('data/customer_service', 'gpt2_prepared')
         self.split = split
         self.df = pd.read_csv('data/customer_service/train.csv')  # or wherever your raw CSV is
         self.df = self.df[['conversation', 'customer_sentiment']].dropna()

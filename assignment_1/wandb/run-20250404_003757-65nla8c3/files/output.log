@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 322, in <module>
+    losses = estimate_loss()
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 275, in estimate_loss
+    _, loss = model(X, Y)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/model.py", line 184, in forward
+    logits = self.lm_head(x)  # (B, T, vocab_size)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1928, in __getattr__
+    raise AttributeError(
+AttributeError: 'GPT' object has no attribute 'lm_head'
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 322, in <module>
+    losses = estimate_loss()
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 275, in estimate_loss
+    _, loss = model(X, Y)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/model.py", line 184, in forward
+    logits = self.lm_head(x)  # (B, T, vocab_size)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1928, in __getattr__
+    raise AttributeError(
+AttributeError: 'GPT' object has no attribute 'lm_head'

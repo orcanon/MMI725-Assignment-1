@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 322, in <module>
+    losses = estimate_loss()
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 272, in estimate_loss
+    for X, Y in loader:
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 708, in __next__
+    data = self._next_data()
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 764, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 138, in __getitem__
+    input_ids = self.encoded_conversations[idx]
+AttributeError: 'GPT2Dataset' object has no attribute 'encoded_conversations'
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 322, in <module>
+    losses = estimate_loss()
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 272, in estimate_loss
+    for X, Y in loader:
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 708, in __next__
+    data = self._next_data()
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 764, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 138, in __getitem__
+    input_ids = self.encoded_conversations[idx]
+AttributeError: 'GPT2Dataset' object has no attribute 'encoded_conversations'
