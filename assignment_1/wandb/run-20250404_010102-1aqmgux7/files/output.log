@@ -3,3 +3,6 @@ iter 0: loss 2.9891, time 152694.94ms, mfu -100.00%
 iter 1: loss 6.0057, time 118038.17ms, mfu -100.00%
 iter 2: loss 5.0046, time 119179.79ms, mfu -100.00%
 iter 3: loss 0.2175, time 121704.47ms, mfu -100.00%
+iter 4: loss 1.5243, time 122363.93ms, mfu -100.00%
+step 5: train loss 0.7390, val loss 0.8886
+saving checkpoint to out-customer-gpt2
