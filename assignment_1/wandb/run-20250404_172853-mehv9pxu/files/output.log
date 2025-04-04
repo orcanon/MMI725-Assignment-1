@@ -1,0 +1,58 @@
+step 0: train loss 1.9448, val loss 1.9799
+iter 0: loss 2.9891, time 149007.53ms, mfu -100.00%
+iter 1: loss 1.1792, time 116661.74ms, mfu -100.00%
+iter 2: loss 0.9384, time 118786.33ms, mfu -100.00%
+iter 3: loss 1.5456, time 122627.05ms, mfu -100.00%
+iter 4: loss 0.3633, time 124741.38ms, mfu -100.00%
+step 5: train loss 1.0242, val loss 1.2474
+saving checkpoint to out-customer-gpt2
+iter 5: loss 1.9580, time 146762.58ms, mfu 0.03%
+iter 6: loss 1.8671, time 127123.67ms, mfu 0.03%
+iter 7: loss 0.3105, time 127041.92ms, mfu 0.03%
+iter 8: loss 1.3210, time 128230.12ms, mfu 0.03%
+iter 9: loss 0.5356, time 130307.04ms, mfu 0.03%
+step 10: train loss 0.8590, val loss 0.8815
+saving checkpoint to out-customer-gpt2
+iter 10: loss 0.4326, time 148982.85ms, mfu 0.03%
+iter 11: loss 1.2387, time 132015.71ms, mfu 0.03%
+iter 12: loss 1.0810, time 131324.32ms, mfu 0.03%
+iter 13: loss 0.4833, time 132499.22ms, mfu 0.03%
+iter 14: loss 0.4911, time 132097.95ms, mfu 0.03%
+step 15: train loss 0.8108, val loss 0.9904
+saving checkpoint to out-customer-gpt2
+iter 15: loss 6.1432, time 151673.66ms, mfu 0.03%
+iter 16: loss 0.2808, time 130299.08ms, mfu 0.03%
+iter 17: loss 1.7689, time 124476.71ms, mfu 0.03%
+iter 18: loss 1.8506, time 124845.26ms, mfu 0.03%
+iter 19: loss 0.2316, time 126732.82ms, mfu 0.03%
+step 20: train loss 1.1151, val loss 1.2678
+saving checkpoint to out-customer-gpt2
+iter 20: loss 1.4891, time 148744.81ms, mfu 0.03%
+iter 21: loss 1.2708, time 131408.61ms, mfu 0.03%
+iter 22: loss 0.2793, time 132142.90ms, mfu 0.03%
+iter 23: loss 0.3468, time 138088.29ms, mfu 0.03%
+iter 24: loss 0.3043, time 140861.94ms, mfu 0.03%
+step 25: train loss 1.0556, val loss 1.1860
+saving checkpoint to out-customer-gpt2
+iter 25: loss 0.2077, time 167622.30ms, mfu 0.03%
+iter 26: loss 1.8714, time 149268.05ms, mfu 0.03%
+iter 27: loss 0.1052, time 153117.94ms, mfu 0.03%
+iter 28: loss 2.3149, time 149545.85ms, mfu 0.03%
+iter 29: loss 2.1966, time 148582.56ms, mfu 0.03%
+step 30: train loss 1.4508, val loss 1.6024
+saving checkpoint to out-customer-gpt2
+iter 30: loss 0.0898, time 164172.65ms, mfu 0.03%
+iter 31: loss 2.3167, time 143401.42ms, mfu 0.03%
+iter 32: loss 2.1407, time 142592.99ms, mfu 0.03%
+iter 33: loss 1.1014, time 143048.35ms, mfu 0.03%
+iter 34: loss 0.4206, time 141362.69ms, mfu 0.03%
+step 35: train loss 0.8230, val loss 0.8210
+saving checkpoint to out-customer-gpt2
+iter 35: loss 0.5478, time 161057.45ms, mfu 0.03%
+iter 36: loss 0.8079, time 140033.33ms, mfu 0.03%
+iter 37: loss 0.6585, time 140366.93ms, mfu 0.03%
+iter 38: loss 1.0986, time 141970.35ms, mfu 0.03%
+iter 39: loss 0.3349, time 137897.36ms, mfu 0.03%
+step 40: train loss 0.8716, val loss 0.8618
+saving checkpoint to out-customer-gpt2
+iter 40: loss 1.6244, time 162628.67ms, mfu 0.03%

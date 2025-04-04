@@ -1,0 +1,22 @@
+step 0: train loss 1.9448, val loss 1.9799
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 378, in <module>
+    X, Y = X.to(device), Y.to(device)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/Users/orcanon/Desktop/DI725/assignment_1/finetune.py", line 378, in <module>
+    X, Y = X.to(device), Y.to(device)
+KeyboardInterrupt
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x29560c280>
+Traceback (most recent call last):
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/wandb/sdk/lib/service_connection.py", line 94, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/wandb/sdk/lib/service_connection.py", line 226, in teardown
+    self._router.join()
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/site-packages/wandb/sdk/interface/router.py", line 75, in join
+    self._thread.join()
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/threading.py", line 1096, in join
+    self._wait_for_tstate_lock()
+  File "/Users/orcanon/.conda/envs/python3-env/lib/python3.10/threading.py", line 1116, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+KeyboardInterrupt:

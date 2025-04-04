@@ -6,3 +6,5 @@
 {"time":"2025-04-04T01:01:03.336116+03:00","level":"INFO","msg":"handler: started","stream_id":"1aqmgux7"}
 {"time":"2025-04-04T01:01:03.592005+03:00","level":"INFO","msg":"Starting system monitor"}
 {"time":"2025-04-04T01:06:49.649358+03:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/orcanon1-metu/customer-sentiment/1aqmgux7/file_stream\": read tcp 192.168.1.38:55597->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-04-04T01:14:04.035661+03:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/orcanon1-metu/customer-sentiment/1aqmgux7/file_stream\": read tcp 192.168.1.38:55698->35.186.228.49:443: read: connection reset by peer"}
+{"time":"2025-04-04T01:17:19.20597+03:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/orcanon1-metu/customer-sentiment/1aqmgux7/file_stream\": read tcp 192.168.1.38:55741->35.186.228.49:443: read: connection reset by peer"}

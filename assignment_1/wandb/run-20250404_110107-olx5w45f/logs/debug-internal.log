@@ -1,0 +1,15 @@
+{"time":"2025-04-04T11:01:07.72868+03:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/Users/orcanon/Desktop/DI725/assignment_1/wandb/run-20250404_110107-olx5w45f/logs/debug-core.log"}
+{"time":"2025-04-04T11:01:08.216403+03:00","level":"INFO","msg":"created new stream","id":"olx5w45f"}
+{"time":"2025-04-04T11:01:08.216641+03:00","level":"INFO","msg":"stream: started","id":"olx5w45f"}
+{"time":"2025-04-04T11:01:08.216648+03:00","level":"INFO","msg":"handler: started","stream_id":"olx5w45f"}
+{"time":"2025-04-04T11:01:08.216694+03:00","level":"INFO","msg":"writer: Do: started","stream_id":"olx5w45f"}
+{"time":"2025-04-04T11:01:08.216906+03:00","level":"INFO","msg":"sender: started","stream_id":"olx5w45f"}
+{"time":"2025-04-04T11:01:08.471792+03:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-04T11:46:29.381072+03:00","level":"INFO","msg":"stream: closing","id":"olx5w45f"}
+{"time":"2025-04-04T11:46:29.381395+03:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-04T11:46:29.381461+03:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-04T11:46:30.108861+03:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-04T11:46:30.360959+03:00","level":"INFO","msg":"sender: closed","stream_id":"olx5w45f"}
+{"time":"2025-04-04T11:46:30.360935+03:00","level":"INFO","msg":"writer: Close: closed","stream_id":"olx5w45f"}
+{"time":"2025-04-04T11:46:30.361976+03:00","level":"INFO","msg":"handler: closed","stream_id":"olx5w45f"}
+{"time":"2025-04-04T11:46:30.362034+03:00","level":"INFO","msg":"stream: closed","id":"olx5w45f"}
